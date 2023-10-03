@@ -31,7 +31,7 @@ def modify_xml(file_name):
         cpu.set(mode[0], mode[1])
     for setting in cpu_setts:
         cpu.append(setting)
-    tree.write(file_name + "123.xml")
+    tree.write(file_name)
 
 
 def set_kvm_intel():
