@@ -50,7 +50,7 @@ def main():
     shutdown_vms(xml_files)
     print(xml_files)
     for file in xml_files:
-        modify_xml("qemu/" + file)
+        modify_xml("/etc/libvirt/qemu/" + file)
 
     print("The end!")
 
