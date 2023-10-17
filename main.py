@@ -27,6 +27,7 @@ def modify_xml(file_name):
     child_hyperv.append(synic)
     features.append(child_hyperv)
     cpu = root.find("cpu")
+    cpu.remove(cpu.find("model"))
     for mode in cpu_modes:
         cpu.set(mode[0], mode[1])
     for setting in cpu_setts:
