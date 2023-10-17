@@ -25,9 +25,16 @@ def modify_xml(file_name):
     synic = ET.Element("synic")
     synic.set("state", "on")
     child_hyperv.append(synic)
-    features.append(child_hyperv)
-    cpu = root.find("cpu")
-    cpu.remove(cpu.find("model"))
+    if not features.find("hyperv"):
+        features.append(child_hyperv)
+    cpus = root.findall("cpu")
+    saved_stat = None
+    for cpu in cpus:
+        saved_stat = cpu.find("topology")
+        root.remove(cpu)
+    cpu = ET.Element("cpu")
+    cpu.append(saved_stat)
+    root.append(cpu)
     for mode in cpu_modes:
         cpu.set(mode[0], mode[1])
     for setting in cpu_setts:
